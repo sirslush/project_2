@@ -28,9 +28,38 @@ private:
     int size = 0;
 };
 
+class conections {
+public:
+    void setVar(string namein){name = namein;}
+    void setOperation(string operIn){operation.append(operIn);}
+    void setInputs(string inp){inputs.append(inp);}
+private:
+    string name = "";
+    string operation = "";
+    string inputs = "";
+
+};
+
 
 void createNewVar(variable){
     
+}
+list<conections> parseInputStringComp(string str, list<conections> conects){
+    stringstream s(str);
+    string word ="";
+    conections newconect;
+    s >> word;
+    newconect.setVar(word);
+    s >> word;
+    newconect.setOperation(word);
+    s >> word;
+    newconect.setInputs(word);
+    s >> word;
+    newconect.setOperation(word);
+    s >> word;
+    newconect.setInputs(word);
+    conects.push_back(newconect);
+    return conects;
 }
 
 list<variable> parseInputStringIOWire(string str, list<variable> varList){
@@ -86,6 +115,7 @@ int main(int argc, const char * argv[]) {
     string str;
     string myFilePath = "474a_circuit1.txt";
     list<variable> varList;
+    list<conections> computations;
 
     myinfile.open(myFilePath);
     
@@ -102,7 +132,7 @@ int main(int argc, const char * argv[]) {
             varList = parseInputStringIOWire(str,varList);
         }
         else{
-            break;
+            computations = parseInputStringComp(str, computations);
         }
     }
     myoutfile.open ("example.txt");
