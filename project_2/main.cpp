@@ -16,7 +16,7 @@
 
 using namespace std;
 
-class variable {
+class variable { // test
 public:
     variable(string name){type = name;}
     void setSize(int sizeIn){size = sizeIn;}
