@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include <string>
 #include <list>
+#include "output.hpp"
 
 
 using namespace std;
@@ -135,8 +136,7 @@ int main(int argc, const char * argv[]) {
             computations = parseInputStringComp(str, computations);
         }
     }
-    myoutfile.open ("example.txt");
-    myoutfile << "Writing this to a file.\n";
+    outputFunct();
     myinfile.close();
     myoutfile.close();
     return 0;
