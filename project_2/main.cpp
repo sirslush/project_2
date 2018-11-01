@@ -54,6 +54,14 @@ list<variable> parseInputStringIOWire(string str, list<variable> varList){
         input.setSize(stoi(size));
         //scan in var names
         while (s >> word) {
+            for (int i =0; i < word.size(); i++) {
+                if (word.at(i)==',') {
+                    word.pop_back();
+                }
+            }
+            if (!input.getVarnames().empty()) {
+                input.addVarName(" ,");
+            }
             input.addVarName(word);
         }
         varList.push_back(input);
