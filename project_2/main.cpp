@@ -17,29 +17,7 @@
 
 using namespace std;
 
-class variable { // test
-public:
-    variable(string name){type = name;}
-    void setSize(int sizeIn){size = sizeIn;}
-    void addVarName(string in){varNames.append(in);}
-    string getType(){return type;}
-private:
-    string type = "";
-    string varNames= "";
-    int size = 0;
-};
 
-class conections {
-public:
-    void setVar(string namein){name = namein;}
-    void setOperation(string operIn){operation.append(operIn);}
-    void setInputs(string inp){inputs.append(inp);}
-private:
-    string name = "";
-    string operation = "";
-    string inputs = "";
-
-};
 
 
 void createNewVar(variable){
@@ -136,7 +114,7 @@ int main(int argc, const char * argv[]) {
             computations = parseInputStringComp(str, computations);
         }
     }
-    outputFunct();
+    outputFunct(varList, computations);
     myinfile.close();
     myoutfile.close();
     return 0;

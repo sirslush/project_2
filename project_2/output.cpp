@@ -10,13 +10,17 @@
 #include <iostream>
 
 
-int outputFunct(){
+int outputFunct(list<variable> varList, list<conections> computations){
     ofstream myoutfile;
+    
     myoutfile.open ("Ciruit1.txt");
     myoutfile << "`timescale 1ns / 1ps\n\n\n";
     
+    list<variable>::iterator it = varList.begin();
     myoutfile << "module circuit1(inputs/outputs);\n";
+        myoutfile << it->getVarnames() << "\n";
     myoutfile << "\tparameter Int(sizes);\n\n";
+        myoutfile << it->getSize() << "\n";
     myoutfile << "\tinput [Int(size)-1:0] (inputs);\n";
     myoutfile << "\tinput Clk, Rst;\n";
     myoutfile << "\toutput [Int(size)-1:0] (output);\n";
@@ -25,7 +29,7 @@ int outputFunct(){
     myoutfile << "\twire (wirename);\n";
     myoutfile << "\twire [Int(size)-1:0] (wire);\n";
     myoutfile << "\twire [Int(size)-1:0] (wire);\n";
-
+    
     
     
     myoutfile << "\n\nendmodule";

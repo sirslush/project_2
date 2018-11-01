@@ -21,6 +21,35 @@
 
 using namespace std;
 
-int outputFunct();
+class variable { // test
+public:
+    variable(string name){type = name;}
+    void setSize(int sizeIn){size = sizeIn;}
+    void addVarName(string in){varNames.append(in);}
+    string getType(){return type;}
+    string getVarnames(){return varNames;}
+    int getSize(){return size;}
+private:
+    string type = "";
+    string varNames= "";
+    int size = 0;
+};
+
+class conections {
+public:
+    void setVar(string namein){name = namein;}
+    void setOperation(string operIn){operation.append(operIn);}
+    void setInputs(string inp){inputs.append(inp);}
+    string getName(){return name;}
+    string getOperation(){return operation;}
+    string getInputs(){return inputs;}
+private:
+    string name = "";
+    string operation = "";
+    string inputs = "";
+    
+};
+
+int outputFunct(list<variable> varList, list<conections> computations);
 
 #endif /* output_hpp */
