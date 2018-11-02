@@ -49,7 +49,12 @@ private:
     string inputs = "";
     
 };
-
+void makeWireOutputs(list<variable> list, ofstream &os);
+void makeOutputsOutputs(list<variable> listTemp, ofstream &os);
+void makeInputsOutputs(list<variable> listTemp, ofstream &os);
+list<variable> makeListofVar(list<variable> list, string type);
 int outputFunct(list<variable> varList, list<conections> computations);
+list<int> getSizes(list<variable> varList);
+void makeModules(list<conections> computations, ofstream &os);
 
 #endif /* output_hpp */

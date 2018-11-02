@@ -33,6 +33,7 @@ list<conections> parseInputStringComp(string str, list<conections> conects){
     newconect.setOperation(word);
     s >> word;
     newconect.setInputs(word);
+    newconect.setInputs(" ,");
     s >> word;
     newconect.setOperation(word);
     s >> word;
@@ -100,10 +101,9 @@ int main(int argc, const char * argv[]) {
     ofstream myoutfile;
     ifstream myinfile;
     string str;
-    string myFilePath = "474a_circuit1.txt";
+    string myFilePath = "474a_circuit3.txt";
     list<variable> varList;
     list<conections> computations;
-
     myinfile.open(myFilePath);
     
     if (!myinfile)
