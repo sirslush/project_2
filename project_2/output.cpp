@@ -88,16 +88,16 @@ void makeModules(list<conections> computations, ofstream &os){
             nums[4]++;
         }
         else if (it->getOperation() == "=?"){
-            os << "make comparitor with (" << it->getInputs() << ")\n";
-            os << "\t\tand output " << it->getName() << "\n";
-        }
-        else if (it->getOperation() == "=*"){
-            os << "MUL #(.DATAWIFTH(Int(SIZE fix))) mul" << nums[5] << "(" << it->getName() << " ," << it->getInputs() << ");\n\n";
+            os << "MUX2x1 #(.DATAWIFTH(Int(SIZE fix))) mux2x1_" << nums[5] << "(" << it->getName() << " ," << it->getInputs() << ");\n\n";
             nums[5]++;
         }
+        else if (it->getOperation() == "=*"){
+            os << "MUL #(.DATAWIFTH(Int(SIZE fix))) mul" << nums[6] << "(" << it->getName() << " ," << it->getInputs() << ");\n\n";
+            nums[6]++;
+        }
         else if (it->getOperation() == "="){
-            os << "make wireconection with (" << it->getInputs() << ")\n";
-            os << "\t\tand output " << it->getName() << "\n";
+            os << "REG #(.DATAWIFTH(Int(SIZE fix))) reg" << nums[7] << "(Clk, Rst, " << it->getName() << " ," << it->getInputs() << ");\n\n";
+            nums[7]++;
         }
     }
     
