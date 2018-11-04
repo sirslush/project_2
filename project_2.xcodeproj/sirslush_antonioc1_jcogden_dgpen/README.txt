@@ -22,4 +22,4 @@
 	antonioc1 	- 	
 	
 	jcogden		- code comments, connected files (readme/cmake etc), 
-			file io adjustments, minor primary code changes
+			fileIO arg adjustments, minor code changes
