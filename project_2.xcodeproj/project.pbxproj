@@ -245,8 +245,9 @@
 		0650238B21824F5200B0CB8D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9H7538KMM4;
+				DEVELOPMENT_TEAM = TSY6XB93KQ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -254,8 +255,9 @@
 		0650238C21824F5200B0CB8D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9H7538KMM4;
+				DEVELOPMENT_TEAM = TSY6XB93KQ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
