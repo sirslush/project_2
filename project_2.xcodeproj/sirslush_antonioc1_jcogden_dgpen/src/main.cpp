@@ -11,6 +11,7 @@
 #include <sstream>
 #include <stdio.h>
 #include <string>
+
 #include <list>
 #include "output.hpp"
 
@@ -21,6 +22,7 @@ using namespace std;
 void createNewVar(variable){
     
 }
+
 list<conections> parseInputStringComp(string str, list<conections> conects){
     stringstream s(str);
     string word ="";
@@ -33,12 +35,12 @@ list<conections> parseInputStringComp(string str, list<conections> conects){
     newconect.setInputs(word);
     
     s >> word;
-    if (word.size()>1) {
+    if (word.size()>1) {                //add connections to list
         conects.push_back(newconect);
         return conects;
     }
     
-    else{
+    else{                               //spearate between names
         newconect.setInputs(" ,");
         newconect.setOperation(word);
     }
@@ -49,11 +51,22 @@ list<conections> parseInputStringComp(string str, list<conections> conects){
     return conects;
 }
 
+bool checkVarError(list<variable> varList, list<variable> computations, char toCheck){
+    bool tf = false;
+    int i;
+    
+    for(i = 0; i <= varList.size(); i++){
+        if(toCheck == varList.getName(i)){
+            tf = true;
+        }}
+    return tf;
+}
+
 list<variable> parseInputStringIOWire(string str, list<variable> varList){
     stringstream s(str);
     string word ="";
     s >> word;
-    if (word == "input") {
+    if (word == "input") {                              //input parse procedue
         variable input(word);
         //create inputs
         s >> word;
@@ -74,7 +87,7 @@ list<variable> parseInputStringIOWire(string str, list<variable> varList){
         }
         varList.push_back(input);
     }
-    if (word == "output") {
+    if (word == "output") {                             //output parse procedure
         variable output(word);
         //create outputs
         s >> word;
@@ -88,7 +101,7 @@ list<variable> parseInputStringIOWire(string str, list<variable> varList){
         varList.push_back(output);
 
     }
-    if (word == "wire") {
+    if (word == "wire") {                               //wire parse procedure
         variable wire(word);
         //create wires
         s >> word;
@@ -108,11 +121,12 @@ int main(int argc, const char * argv[]) {
     ofstream myoutfile;
     ifstream myinfile;
     string str;
-    //string myFilePath (argv[1]);                //assign input file name to myFilePath
-    //string oFilePath (argv[2]);                 //assign output file name to oFilePath
+    string myFilePath = string(argv[1]);                //assign input file name to myFilePath
+    string oFilePath = string(argv[2]);                 //assign output file name to oFilePath
     list<variable> varList;
     list<conections> computations;
-    myinfile.open(argv[1]);                      //open specified input file
+    //myinfile.open(argv[1]);                      //open specified input file
+    myinfile.open(myFilePath);
     
     if (!myinfile)                               //print error if file name is not specified or not found
     {
@@ -120,7 +134,7 @@ int main(int argc, const char * argv[]) {
         return 1;
     }
     
-    while (std::getline(myinfile, str))
+    while (std::getline(myinfile, str))         //scan all of input file
     {
         size_t found = str.find("=");
         if (found==string::npos) {
@@ -128,6 +142,13 @@ int main(int argc, const char * argv[]) {
         }
         else{
             computations = parseInputStringComp(str, computations);
+        }
+        for(int i = 0; i < str.length(); i++){
+            char ch = str.at(i);
+            if(ch < 0 || ch > 127){
+                cout << "character outside of usable operators\n";
+                return 1;
+            }
         }
     }
     outputFunct(varList, computations, argv[2]);
