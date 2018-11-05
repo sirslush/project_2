@@ -60,43 +60,43 @@ void makeModules(list<conections> computations, ofstream &os){
     int nums[10] = {0}; // add 0, sub 1, compareq 2, SHR 3, ...
     for (list<conections>::iterator it = computations.begin(); it != computations.end(); ++it) { os << "\t";
         if (it->getOperation() == "=+") {
-            os << "ADD #(.DATAWIFTH(Int(SIZE fix))) add" << nums[0] << "(" << it->getName() << " ," << it->getInputs() << ");\n\n";
+            os << "ADD #(.DATAWIFTH(Int16)) add" << nums[0] << "(" << it->getName() << " ," << it->getInputs() << ");\n\n";
             nums[0]++;
         }
         else if (it->getOperation() == "=-"){
-            os << "SUB #(.DATAWIFTH(Int(SIZE fix))) sub" << nums[1] << "(" << it->getName() << " ," << it->getInputs() << ");\n\n";
+            os << "SUB #(.DATAWIFTH(Int16)) sub" << nums[1] << "(" << it->getName() << " ," << it->getInputs() << ");\n\n";
             nums[1]++;
         }
         else if (it->getOperation() == "==="){
-            os << "COMP #(.DATAWIFTH(Int(SIZE fix))) comp" << nums[2] << "(" << it->getName() << " ," << it->getInputs() << ");\n\n";
+            os << "COMP #(.DATAWIFTH(Int16)) comp" << nums[2] << "(" << it->getName() << " ," << it->getInputs() << ");\n\n";
             nums[2]++;
         }
         else if (it->getOperation() == "=<"){
-            os << "COMP #(.DATAWIFTH(Int(SIZE fix))) comp" << nums[2] << "(" << it->getName() << " ," << it->getInputs() << ");\n\n";
+            os << "COMP #(.DATAWIFTH(Int16)) comp" << nums[2] << "(" << it->getName() << " ," << it->getInputs() << ");\n\n";
             nums[2]++;
         }
         else if (it->getOperation() == "=>"){
-            os << "COMP #(.DATAWIFTH(Int(SIZE fix))) comp" << nums[2] << "(" << it->getName() << " ," << it->getInputs() << ");\n\n";
+            os << "COMP #(.DATAWIFTH(Int16)) comp" << nums[2] << "(" << it->getName() << " ," << it->getInputs() << ");\n\n";
             nums[2]++;
         }
         else if (it->getOperation() == "=<<"){
-            os << "SHL #(.DATAWIFTH(Int(SIZE fix))) shl" << nums[3] << "(" << it->getName() << " ," << it->getInputs() << ");\n\n";
+            os << "SHL #(.DATAWIFTH(Int16)) shl" << nums[3] << "(" << it->getName() << " ," << it->getInputs() << ");\n\n";
             nums[3]++;
         }
         else if (it->getOperation() == "=>>"){
-            os << "SHR #(.DATAWIFTH(Int(SIZE fix))) shr" << nums[4] << "(" << it->getName() << " ," << it->getInputs() << ");\n\n";
+            os << "SHR #(.DATAWIFTH(Int16)) shr" << nums[4] << "(" << it->getName() << " ," << it->getInputs() << ");\n\n";
             nums[4]++;
         }
         else if (it->getOperation() == "=?"){
-            os << "MUX2x1 #(.DATAWIFTH(Int(SIZE fix))) mux2x1_" << nums[5] << "(" << it->getName() << " ," << it->getInputs() << ");\n\n";
+            os << "MUX2x1 #(.DATAWIFTH(Int16)) mux2x1_" << nums[5] << "(" << it->getName() << " ," << it->getInputs() << ");\n\n";
             nums[5]++;
         }
         else if (it->getOperation() == "=*"){
-            os << "MUL #(.DATAWIFTH(Int(SIZE fix))) mul" << nums[6] << "(" << it->getName() << " ," << it->getInputs() << ");\n\n";
+            os << "MUL #(.DATAWIFTH(Int16)) mul" << nums[6] << "(" << it->getName() << " ," << it->getInputs() << ");\n\n";
             nums[6]++;
         }
         else if (it->getOperation() == "="){
-            os << "REG #(.DATAWIFTH(Int(SIZE fix))) reg" << nums[7] << "(Clk, Rst, " << it->getName() << " ," << it->getInputs() << ");\n\n";
+            os << "REG #(.DATAWIFTH(Int16)) reg" << nums[7] << "(Clk, Rst, " << it->getName() << " ," << it->getInputs() << ");\n\n";
             nums[7]++;
         }
     }
