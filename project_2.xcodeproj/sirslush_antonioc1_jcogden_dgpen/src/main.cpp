@@ -121,8 +121,8 @@ int main(int argc, const char * argv[]) {
     ofstream myoutfile;
     ifstream myinfile;
     string str;
-    string myFilePath = string(argv[1]);                //assign input file name to myFilePath
-    string oFilePath = string(argv[2]);                 //assign output file name to oFilePath
+    string myFilePath(argv[1]);                //assign input file name to myFilePath
+    string oFilePath(argv[2]);                 //assign output file name to oFilePath
     list<variable> varList;
     list<conections> computations;
     //myinfile.open(argv[1]);                      //open specified input file
